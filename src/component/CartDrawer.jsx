@@ -15,6 +15,7 @@ import { ShoppingCart, Plus, Minus, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { increaseQuantity, decreaseQuantity, removeItem } from "../store/cartSlice"
 import { useSelector, useDispatch } from "react-redux"
+import userService from "../appwrite/services"
 
 export default function CartSheet({ open, setOpen }) {
   const dispatch = useDispatch()
@@ -43,7 +44,7 @@ const decrement = (itemId, color, sizes) =>
     <Sheet open={safeOpen} onOpenChange={safeSetOpen}>
       <SheetTrigger asChild>
         <button className="relative">
-          <ShoppingCart size={30} className="text-white" />
+          <ShoppingCart size={25} className="text-white cursor-pointer hover:text-orange-400  " />
           {(cartItems?.length ?? 0) > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex justify-center items-center rounded-full">
               {totalCartItems}
@@ -70,8 +71,9 @@ const decrement = (itemId, color, sizes) =>
                 className="flex gap-3 border-b pb-3 last:border-none"
               >
                 {/* Product Image */}
+                {/* item.image? item.image:p1 */}
                 <img
-                  src={p1}
+                  src={userService.getFileView(item.image) }
                   alt={item.title}
                   className="w-20 h-20 object-cover rounded border"
                 />

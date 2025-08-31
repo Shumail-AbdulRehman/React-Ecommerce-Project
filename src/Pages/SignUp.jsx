@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import authService from "../appwrite/auth";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
  function SignUp() {
   const navigate=useNavigate()
   const {
@@ -31,10 +32,10 @@ import { useNavigate } from "react-router-dom";
   };
 
   return (
-    <main className="flex h-full w-full items-center justify-center bg-pink-200">
+    <main className="flex h-[830px]  w-full items-center justify-center bg-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center justify-center w-full gap-7 p-6 bg-white rounded-2xl max-w-md"
+        className="flex flex-col items-center justify-center w-full gap-7 p-6 border-2 border-black bg-white rounded-2xl max-w-md"
       >
         <div className="text-3xl font-[Poppins]">Sign Up</div>
 
@@ -90,16 +91,17 @@ import { useNavigate } from "react-router-dom";
 
         <button
           type="submit"
-          className="bg-orange-500 text-white w-full py-2 rounded-xl hover:bg-orange-600"
+          className="bg-orange-500 text-white w-full py-2 cursor-pointer rounded-xl hover:bg-orange-600"
         >
           Create Account
         </button>
 
         <div className="text-lg">
           <span>Already have an account? </span>
-          <button type="button" className="text-orange-400">
+          <Link to="/login"><button type="button" className="text-orange-400 cursor-pointer">
             Login
-          </button>
+          </button></Link>
+          
         </div>
       </form>
     </main>

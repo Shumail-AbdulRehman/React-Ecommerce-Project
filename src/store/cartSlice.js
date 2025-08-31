@@ -28,9 +28,10 @@ const cartSlice = createSlice({
           title: newItem.title,
           price: newItem.price,
           color: newItem.color,
-          sizes: newItem.sizes, // ✅ consistent
+          sizes: newItem.sizes,
           quantity: 1,
           totalPrice: newItem.price,
+          image:newItem.image
         });
       }
 

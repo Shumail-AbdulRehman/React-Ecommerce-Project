@@ -41,22 +41,22 @@ const kidSubcategories = ["Tops", "Bottoms", "Winters"]
         {/* <img src={logo} alt="Logo" className="w-20" /> */}
         SHOPPER
       </div>
-      <ul className="hidden sm:flex  gap-8 items-center mt-1">
-        <Link to="/">        <Button       className=" text-[16px]  bg-black text-white hover:bg-white hover:text-black border border-black">Home</Button>
+      <ul className="hidden sm:flex   gap-8 items-center mt-1">
+        <Link to="/">        <Button       className=" text-[16px]  bg-black cursor-pointer text-white hover:bg-white hover:text-black border border-black">Home</Button>
 </Link>
   <NavigationMenuComp title="Women" subcategories={womenSubcategories} category="women" />
   <NavigationMenuComp title="Men" subcategories={menSubcategories} category="men" />
   <NavigationMenuComp title="Kids" subcategories={kidSubcategories} category="kid" />
   {/* <NavigationMenuComp title="Our Collections" subcategories={ourCollections} category="Collections" /> */}
 
-    <Link to="/collections">        <Button       className=" text-[16px]  bg-black text-white hover:bg-white hover:text-black border border-black">Our Collections</Button>
+    <Link to="/collections">        <Button       className=" text-[16px]  bg-black text-white cursor-pointer hover:bg-white hover:text-black border border-black">Our Collections</Button>
 </Link>
   
 </ul>
 
-<div className="flex justify-around items-center gap-5">
+<div className="flex justify-around  items-center gap-5">
 
-  {userStatus? null:<Link to="/login"><button className=" text-white text-xl ">Login</button></Link> }
+  {userStatus? null:<Link to="/login"><button className="  text-white rounded-2xl px-3 py-3 hover:text-black hover:bg-gray-100 text-xl ">Login</button></Link> }
   <CartDrawer/>
   {userStatus? <LogoutBtn />:null}
 

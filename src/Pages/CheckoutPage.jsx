@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import { useForm } from "react-hook-form"
 import p1 from "../assets/Assets/product_20.png"
-
+import userService from "../appwrite/services"
 function CheckoutPage() {
   const cartItems = useSelector((state) => state.cart.items)
   const totalCartItems = useSelector((state) => state.cart.totalQuantity)
@@ -19,7 +19,6 @@ function CheckoutPage() {
 
   const onSubmit = (data) => {
     console.log("Checkout Data:", data)
-    // send to backend here...
   }
 
   return (
@@ -141,7 +140,6 @@ function CheckoutPage() {
             </div>
           </div>
 
-          {/* Payment Info */}
           <div>
             <h3 className="text-lg font-medium mb-3">Payment Method</h3>
             <div className="space-y-3">
@@ -212,16 +210,15 @@ function CheckoutPage() {
         </form>
       </div>
 
-      {/* RIGHT → Cart Summary */}
       <div className="bg-gray-50 shadow-md rounded-2xl p-6">
         <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
 
         {(cartItems?.length ?? 0) > 0 ? (
           <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
             {cartItems.map((item) => (
-              <div key={item.id} className="flex gap-3 border-b pb-3 last:border-none">
+              <div key={item.$id} className="flex gap-3 border-b pb-3 last:border-none">
                 <img
-                  src={p1}
+                  src={userService.getFileView(item.image)}
                   alt={item.title}
                   className="w-20 h-20 object-cover rounded border"
                 />

@@ -16,7 +16,7 @@ export function NavigationMenuComp({ title, subcategories, category }) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-[16px]  text-white bg-black">
+          <NavigationMenuTrigger className="text-[16px] cursor-pointer  text-white bg-black">
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -27,7 +27,7 @@ export function NavigationMenuComp({ title, subcategories, category }) {
                     {category === "Collections" ? (
                       <Link
                         to={`/${subcat.toLowerCase()}`}
-                        className="block rounded-md px-3 py-2 text-[16px] font-normal  text-base"
+                        className="block rounded-md px-3 py-2 text-[16px] cursor-pointer font-normal  text-base"
                       >
                         {subcat}
                       </Link>

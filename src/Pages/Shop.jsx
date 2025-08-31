@@ -21,11 +21,13 @@ function Shop() {
         <div className='font-bold text-7xl'>
           for everyone
         </div>
-        <div className='flex flex-row bg-red-500 text-white font-medium items-center justify-around p-3 px-10 hover:bg-red-600 rounded-3xl gap-3.5 mt-7'>
-<Link to='/collections'>          <button>Our Collections </button>
-</Link>
+        <Link to='/collections'>
+         <div className='flex flex-row bg-red-500 text-white font-medium cursor-pointer items-center justify-around p-3 px-10 hover:bg-red-600 rounded-3xl gap-3.5 mt-7'>
+          <button className=' cursor-pointer'>Our Collections </button>
+
           <img src={arrow} alt="" />
-        </div>
+        </div></Link>
+       
       </div>
       <div>
         <img className='lg:h-180  w-auto sm:h-100' src={hero_image} alt="hero_image" />

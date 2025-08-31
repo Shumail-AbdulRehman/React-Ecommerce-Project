@@ -36,10 +36,10 @@ export default function Login() {
   };
 
   return (
-    <main className="flex h-full w-full items-center justify-center bg-pink-200">
+    <main className="flex h-[830px] w-full items-center justify-center bg-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center justify-center w-full gap-7 p-6 bg-white rounded-2xl max-w-md"
+        className="flex flex-col items-center justify-center w-full gap-7 p-6 bg-white border-1 border-black rounded-2xl max-w-md"
       >
         <div className="text-3xl font-[Poppins]">Login</div>
 
@@ -83,14 +83,14 @@ export default function Login() {
 
         <button
           type="submit"
-          className="bg-orange-500 text-white w-full py-2 rounded-xl hover:bg-orange-600"
+          className="bg-orange-500 hover:cursor-pointer text-white w-full py-2 rounded-xl hover:bg-orange-600"
         >
           Login
         </button>
 
-        <div className="text-lg">
+        <div className="text-lg ">
           <span>create an account? </span>
-          <Link to="/signup"><button type="button" className="text-orange-400">
+          <Link to="/signup"><button type="button" className="text-orange-400 hover:cursor-pointer">
             Click here
           </button></Link>
           

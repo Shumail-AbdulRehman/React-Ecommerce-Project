@@ -10,7 +10,7 @@ export default function Product() {
   const [product, setProduct] = useState(null)
   const [color, setSelectedColor] = useState(null)
   const [sizes, setSelectedSize] = useState(null)
-  const [added, setAdded] = useState(false) // ✅ feedback state
+  const [added, setAdded] = useState(false)
 
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -22,11 +22,10 @@ export default function Product() {
         color,
         sizes,
       }
-      // delete productWithOptions.sizes
+      console.log("ahhahaha",productWithOptions)
       dispatch(addItem(productWithOptions))
       console.log("Added to cart:", productWithOptions)
 
-      // ✅ visual feedback
       setAdded(true)
       setTimeout(() => setAdded(false), 1200)
     }

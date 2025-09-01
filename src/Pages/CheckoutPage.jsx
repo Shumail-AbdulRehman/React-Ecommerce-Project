@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 // import p1 from "../assets/Assets/product_20.png"
 import userService from "../appwrite/services"
@@ -12,6 +12,9 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux"
 import { clearCart } from "../store/cartSlice"
 import { useDispatch } from "react-redux"
+import authService from "../appwrite/auth"
+import { login } from "../store/authSlice"
+
 function CheckoutPage() {
   const [loading,setLoading]=useState(false)
   const dispatch=useDispatch()
@@ -20,7 +23,7 @@ function CheckoutPage() {
   const totalPrice = useSelector((state) => state.cart.totalPrice)
   const [orderPlace,setOrderPlace]=useState(false);
   const [order,setOrder]=useState(null)
-  const userid=useSelector((state)=> state.auth.userData.$id)
+const userid = useSelector((state) => state.auth.userData?.$id || null);
   const {
     register,
     handleSubmit,
@@ -29,6 +32,25 @@ function CheckoutPage() {
   } = useForm()
   const navigate=useNavigate()
   const paymentMethod = watch("paymentMethod", "card")
+
+  useEffect(()=>
+  {
+    ;(async()=>
+    {
+      const userData=  await   authService.getCurrentUser()
+      if(userData)
+      {
+        console.log(userData)
+        dispatch(login)
+      }
+      else
+      {
+        console.log("you just have been fucked hahahahha")
+      }
+
+
+    })()
+  },[])
 
   const onSubmit = async (data) => {
     setLoading(true)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import LoadingSpinner from './LoadingSpinner'
 function AuthLayout({children, authentication=true}) {
     const navigate=useNavigate()
     const[loading, setLoading]=useState(true)  
@@ -16,7 +16,7 @@ function AuthLayout({children, authentication=true}) {
         }
         setLoading(false)
     },[authStatus,authentication,navigate])
-    return loading ? <h1>loading....</h1>:<div> {children}</div>
+    return loading ? <LoadingSpinner/>:<div> {children}</div>
     
 }
 

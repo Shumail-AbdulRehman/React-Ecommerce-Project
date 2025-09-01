@@ -45,7 +45,10 @@ const router = createBrowserRouter([
       {path: "/all", element: <Products/>},
       {path: "/:category/:subcategory/:id", element: <Product/>},
       {path:"/collections",element:<CategoryPage/>},
-      {path:"/checkout",element:<CheckoutPage/>}
+      {path:"/checkout",element:
+      <AuthLayout authentication={true}>
+        <CheckoutPage/>
+        </AuthLayout>}
       ,      {path:"/collections/:category",element:<AllSubcategories/>},
 
 

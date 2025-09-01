@@ -12,7 +12,7 @@ function ProductCard({ price, $id, title, image, category, subcategory,sizes,sto
         {/* <img className="" src={p1} alt={title} /> */}
 
         <div className="mt-2 ml-1">
-          <h1 className="text-xs sm:text-lg font-bold">{title}</h1>
+          <h1 className="text-xs sm:text-lg font-bold">{title.toUpperCase()}</h1>
           <div className='flex gap-3'>  
 <h1 className="text-gray-500 line-through text-sm">PKR 12,789</h1>
        

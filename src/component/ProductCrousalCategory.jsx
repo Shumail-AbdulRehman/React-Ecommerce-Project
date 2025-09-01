@@ -26,7 +26,7 @@ function ProductGrid({ items }) {
               {/* Title + Price */}
               <div className="p-4 flex flex-col items-center text-center">
                 <h1 className="font-semibold text-lg text-gray-900 truncate w-full">
-                  {item.title}
+                  {item.title.toUpperCase()}
                 </h1>
 
                 <div className="flex items-center gap-3 mt-2">

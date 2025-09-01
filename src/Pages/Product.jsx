@@ -47,7 +47,7 @@ export default function Product() {
         <img className="sm:w-[500px] w-auto h-auto sm:h-[600px]" src={userService.getFileView(product.image)} loading="lazy" alt={product.title} />
 
         <div className="flex ml-5 sm:mt-5 flex-col gap-3">
-          <h1 className="font-bold text-xl sm:text-2xl">{product.title}</h1>
+          <h1 className="font-bold text-xl sm:text-2xl">{product.title.toUpperCase()}</h1>
 
           <h1 className="sm:text-xl text-lg font-medium text-gray-700 max-w-md leading-relaxed">
             Description: {product.description}

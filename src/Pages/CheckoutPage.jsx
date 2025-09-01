@@ -55,7 +55,8 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
   const onSubmit = async (data) => {
     setLoading(true)
     console.log("Checkout Data:", data)
-    console.log(userid)
+    // console.log(userid)
+    console.log("killlllllll")
       const order=await orderService.createOrder({total:String(totalPrice),ordertype:data.paymentMethod,status:"processing",paymentstatus:"unpaid",userid,orderitems:JSON.stringify(cartItems)})
 
       console.log("order:=>",order);

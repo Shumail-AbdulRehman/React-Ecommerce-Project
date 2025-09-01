@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import authService from "../appwrite/auth";
@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
-
+import LoadingSpinner from "../component/LoadingSpinner";
 export default function Login() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
+  const [loading,setLoading]=useState(false);
   const {
     register,
     handleSubmit,
@@ -17,6 +18,7 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = async(data) => {
+    setLoading(true)
    try {
      console.log(data);
      const userData= await authService.login(data)
@@ -25,6 +27,7 @@ export default function Login() {
        dispatch(login(userData))
        console.log("user logged in successfully")
        navigate("/")
+
      }
      else
      {
@@ -33,7 +36,13 @@ export default function Login() {
    } catch (error) {
       console.log("error",error)
    }
+   setLoading(false)
   };
+
+  if(loading)
+  {
+    return <LoadingSpinner/>
+  }
 
   return (
     <main className="flex h-[830px] w-full items-center justify-center bg-white">

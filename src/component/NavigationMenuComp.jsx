@@ -16,7 +16,7 @@ export function NavigationMenuComp({ title, subcategories, category }) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-[16px] cursor-pointer  text-white bg-black">
+          <NavigationMenuTrigger className="text-[16px] cursor-pointer  text-white bg-slate-900">
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>

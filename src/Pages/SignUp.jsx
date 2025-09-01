@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import authService from "../appwrite/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../component/LoadingSpinner";
  function SignUp() {
   const navigate=useNavigate()
+  const [loading,setLoading]=useState(false);
   const {
 
     register,
@@ -14,6 +16,7 @@ import { Link } from "react-router-dom";
   } = useForm();
 
   const onSubmit = async(data) => {
+    setLoading(true)
     try {
       console.log(data);
       const userSignUp= await authService.createAccount(data)
@@ -29,7 +32,13 @@ import { Link } from "react-router-dom";
     } catch (error) {
       console.log(error)
     }
+    setLoading(false)
   };
+
+  if(loading)
+  {
+    return <LoadingSpinner/>
+  }
 
   return (
     <main className="flex h-[830px]  w-full items-center justify-center bg-white">

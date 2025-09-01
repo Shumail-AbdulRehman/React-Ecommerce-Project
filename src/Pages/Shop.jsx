@@ -8,17 +8,17 @@ import { Link } from 'react-router-dom'
 function Shop() {
   return (
     <div>
-    <div className='flex  flex-col pt-10 lg:flex-row bg-purple-100 h-[850px]  w-full items-center justify-around'>
+    <div className='flex  flex-col pt-10 sm:flex-row bg-white h-[850px]  w-full items-center justify-around'>
       <div className='flex items-start  justify-between flex-col gap-2 '>
-        <div className='font-medium text-lg'>NEW ARRIVALS ONLY</div>
+        <div className='font-medium text-lg sm:text-lg'>NEW ARRIVALS ONLY</div>
         <div className='flex flex-row'>
-          <div className='font-bold text-7xl'>new</div>
-          <img className='h-18 w-auto' src={hand_icon} alt="hand_icon" />
+          <div className='font-bold  text-5xl sm:text-6xl lg:text-7xl'>new</div>
+          <img className='sm:h-18 h-14 w-auto' src={hand_icon} alt="hand_icon" />
         </div>
-        <div className='font-bold text-7xl'>
+        <div className='font-bold text-5xl sm:text-6xl lg:text-7xl'>
           collections
         </div>
-        <div className='font-bold text-7xl'>
+        <div className='font-bold  text-5xl sm:text-6xl lg:text-7xl'>
           for everyone
         </div>
         <Link to='/collections'>
@@ -30,7 +30,7 @@ function Shop() {
        
       </div>
       <div>
-        <img className='lg:h-180  w-auto sm:h-100' src={hero_image} alt="hero_image" />
+        <img className='lg:h-180 h-auto w-auto sm:h-110' src={hero_image} alt="hero_image" />
       </div>
     </div>
     {/* <div><Testimonials/></div>

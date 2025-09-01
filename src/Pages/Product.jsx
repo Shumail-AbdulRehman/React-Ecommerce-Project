@@ -43,13 +43,13 @@ export default function Product() {
 
   if (product && !loading) {
     return (
-      <div className="w-full h-[800px] flex justify-center gap-20 items-center">
-        <img className="w-[500px] h-[600px]" src={userService.getFileView(product.image)} loading="lazy" alt={product.title} />
+      <div className="w-full h-auto flex-col mt-10 sm:mt-10 lg:mt-0 lg:h-[800px] sm:flex-col lg:flex-row flex justify-center gap-20 items-center">
+        <img className="sm:w-[500px] w-auto h-auto sm:h-[600px]" src={userService.getFileView(product.image)} loading="lazy" alt={product.title} />
 
-        <div className="flex flex-col gap-3">
-          <h1 className="font-bold text-2xl">{product.title}</h1>
+        <div className="flex ml-5 sm:mt-5 flex-col gap-3">
+          <h1 className="font-bold text-xl sm:text-2xl">{product.title}</h1>
 
-          <h1 className="text-xl font-medium text-gray-700 max-w-md leading-relaxed">
+          <h1 className="sm:text-xl text-lg font-medium text-gray-700 max-w-md leading-relaxed">
             Description: {product.description}
           </h1>
 
@@ -115,19 +115,17 @@ export default function Product() {
             </div>
           </div>
 
-          {/* Stock */}
           <h1>STOCK: {product.stock}</h1>
 
-          {/* ✅ Add to Cart Button with animation */}
           <button
             onClick={addToCart}
             disabled={!sizes || !color}
-            className={`mt-4 px-6 py-2 rounded-lg border-2 border-black 
+            className={`mt-4 px-6 py-2 rounded-lg bg-orange-600 
               transition-all duration-300 transform
               ${
                 added
                   ? "bg-green-600 text-white scale-105"
-                  : "bg-black text-white hover:bg-white hover:text-black"
+                  : "bg-black text-white hover:bg-orange-700 hover:text-white"
               } 
               disabled:opacity-50`}
           >

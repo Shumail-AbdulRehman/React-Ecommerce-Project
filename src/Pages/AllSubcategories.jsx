@@ -95,11 +95,11 @@ function AllSubcategories() {
       {/* Banner */}
       <div className="w-full flex justify-center">
         {category === "kid" ? (
-          <img className="h-auto max-w-[80%]" src={banner_kids} alt="" />
+          <img className="sm:h-auto h-auto w-auto sm:max-w-[80%]" src={banner_kids} alt="" />
         ) : category === "men" ? (
-          <img className="h-auto max-w-[80%]" src={banner_mens} alt="" />
+          <img className="sm:h-auto h-auto w-full sm:max-w-[80%]" src={banner_mens} alt="" />
         ) : (
-          <img className="h-auto max-w-[80%]" src={banner_womens} alt="" />
+          <img className="sm:h-auto h-auto w-auto sm:max-w-[80%]" src={banner_womens} alt="" />
         )}
       </div>
         
@@ -108,7 +108,7 @@ function AllSubcategories() {
       {/* Tops Section */}
       {tops?.length > 0 && (
         <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+          <h2 className="text-2xl  ml-10 xl:ml-0 font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Tops
           </h2>
           <ProductCrousal items={tops} />
@@ -118,17 +118,17 @@ function AllSubcategories() {
       {/* Bottoms Section */}
       {bottoms?.length > 0 && (
         <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+          <h2 className="text-2xl  ml-10 xl:ml-0 font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Bottoms
           </h2>
           <ProductCrousal items={bottoms} />
         </div>
       )}
 
-      {/* Winters Section */}
+      {/* Winters Section */} 
       {winters?.length > 0 && (
         <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+          <h2 className="text-2xl  ml-10 xl:ml-0 font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Winters
           </h2>
           <ProductCrousal items={winters} />

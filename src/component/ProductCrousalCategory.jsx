@@ -52,7 +52,7 @@ function ProductGrid({ items }) {
         <div className="flex justify-center mt-8">
           <Link
             to={`/collections/${items[0].category}`}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-orange-600 text-white font-medium hover:bg-orange-700 transition-colors"
           >
             Show More
             <span className="text-xl">→</span>

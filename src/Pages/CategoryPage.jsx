@@ -71,7 +71,7 @@ const getMen=useSelector((state)=> state.products.men)
   }
 
   return (
-    <div className="w-full flex flex-col gap-16 py-10">
+    <div className="w-full  flex flex-col gap-16 py-10">
       {/* Banner */}
       {/* <div className="w-full flex justify-center">
         {category === "kid" ? (
@@ -86,7 +86,7 @@ const getMen=useSelector((state)=> state.products.men)
       {/* Tops Section */}
       {men?.length > 0 && (
         <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+          <h2 className="text-2xl ml-10 xl:ml-0 font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Men
           </h2>
           <ProductCrousal items={men} />
@@ -96,7 +96,7 @@ const getMen=useSelector((state)=> state.products.men)
       {/* Bottoms Section */}
       {women?.length > 0 && (
         <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+          <h2 className="text-2xl ml-10 xl:ml-0  font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Women
           </h2>
           <ProductCrousal items={women} />
@@ -105,8 +105,8 @@ const getMen=useSelector((state)=> state.products.men)
 
       {/* Winters Section */}
       {kid?.length > 0 && (
-        <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
+        <div className="w-full  max-w-6xl mx-auto">
+          <h2 className="text-2xl ml-10 xl:ml-0  font-bold text-gray-800 mb-6 border-l-4 border-black pl-3">
             Kid
           </h2>
           <ProductCrousal items={kid} />

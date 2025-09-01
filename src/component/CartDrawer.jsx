@@ -58,8 +58,8 @@ export default function CartSheet({ open, setOpen }) {
     if (userStatus) {
       navigate("/checkout")
     } else {
-      safeSetOpen(false) // close cart sheet
-      setOpenDialog(true) // open login dialog
+      safeSetOpen(false) 
+      setOpenDialog(true) 
     }
   }
 
@@ -89,7 +89,6 @@ export default function CartSheet({ open, setOpen }) {
             </SheetDescription>
           </SheetHeader>
 
-          {/* Cart Items */}
           <div className="flex-1 p-4 flex flex-col gap-4 overflow-y-auto">
             {(cartItems?.length ?? 0) > 0 ? (
               cartItems.map((item) => (
@@ -97,14 +96,12 @@ export default function CartSheet({ open, setOpen }) {
                   key={item.id}
                   className="flex gap-3 border-b pb-3 last:border-none"
                 >
-                  {/* Product Image */}
                   <img
                     src={userService.getFileView(item.image)}
                     alt={item.title}
                     className="w-20 h-20 object-cover rounded border"
                   />
 
-                  {/* Product Details */}
                   <div className="flex-1 flex flex-col justify-between">
                     <div className="flex justify-between items-start">
                       <h3 className="font-semibold text-sm">{item.title}</h3>
@@ -119,7 +116,6 @@ export default function CartSheet({ open, setOpen }) {
                       </button>
                     </div>
 
-                    {/* Color + Size tags */}
                     <div className="flex gap-2 mt-1 text-xs text-gray-500">
                       {item.color && (
                         <span className="px-2 py-0.5 bg-gray-100 border rounded">
@@ -133,7 +129,6 @@ export default function CartSheet({ open, setOpen }) {
                       )}
                     </div>
 
-                    {/* Quantity & Price */}
                     <div className="flex justify-between items-center mt-2">
                       <div className="flex items-center gap-2">
                         <Button
@@ -172,7 +167,6 @@ export default function CartSheet({ open, setOpen }) {
             )}
           </div>
 
-          {/* Footer */}
           <SheetFooter className="border-t p-4 flex flex-col gap-3">
             <div className="flex justify-between items-center text-lg font-bold">
               <span>Total</span>
@@ -191,11 +185,10 @@ export default function CartSheet({ open, setOpen }) {
         </SheetContent>
       </Sheet>
 
-      {/* Login Required Dialog */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
   <DialogContent className="max-w-sm rounded-2xl p-6 shadow-lg">
     <DialogHeader className="space-y-2 text-center">
-      <DialogTitle className="text-xl font-semibold ml-37">
+      <DialogTitle className="text-xl font-semibold sm:ml-37">
         Login Required
       </DialogTitle>
       <DialogDescription className="text-gray-500 text-sm">

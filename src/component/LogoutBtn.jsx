@@ -25,13 +25,13 @@ function LogoutBtn() {
     }
     setLoading(false)
   };
-  if(loading)
+  if(loading) 
   {
     return <LoadingSpinner/>
   }
   return (
     <div>
-      <button  className="bg-orange-600 hover:cursor-pointer hover:bg-orange-700 text-white px-4 py-2 rounded-xl" onClick={logOut}>LogOut</button>
+      <button  className="bg-slate-900 hover:cursor-pointer text-xl hover:bg-white hover:text-black text-white px-2 py-0 rounded-lg" onClick={logOut}>Logout</button>
     </div>
   );
 }

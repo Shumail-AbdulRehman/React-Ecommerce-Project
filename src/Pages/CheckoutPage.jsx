@@ -31,7 +31,7 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
     formState: { errors },
   } = useForm()
   const navigate=useNavigate()
-  const paymentMethod = watch("paymentMethod", "card")
+  const paymentMethod = watch("paymentMethod", "cod")
 
   useEffect(()=>
   {
@@ -45,7 +45,7 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
       }
       else
       {
-        console.log("you just have been fucked hahahahha")
+        console.log("you")
       }
 
 
@@ -54,7 +54,7 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
 
   const onSubmit = async (data) => {
     setLoading(true)
-    console.log("Checkout Data:", data)
+    console.log("Checkout Data:")
     // console.log(userid)
     console.log("killlllllll")
       const order=await orderService.createOrder({total:String(totalPrice),ordertype:data.paymentMethod,status:"processing",paymentstatus:"unpaid",userid,orderitems:JSON.stringify(cartItems)})
@@ -98,7 +98,6 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
           <CheckCircle className="h-20 w-20 text-green-500" />
         </motion.div>
 
-        {/* Title */}
         <h1 className="text-3xl font-bold text-gray-800 mt-6">
           Order Confirmed!
         </h1>
@@ -150,11 +149,10 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
                   errors.fullName ? "border-red-500" : ""
                 }`}
               />
-              <br/>
               {errors.fullName && (
                 <span className="text-red-500 text-sm">{errors.fullName.message}</span>
               )}
-                            <br/>
+                            
 
               <input
                 {...register("email", {
@@ -167,12 +165,10 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
                   errors.email ? "border-red-500" : ""
                 }`}
               />
-                            <br/>
 
               {errors.email && (
                 <span className="text-red-500 text-sm">{errors.email.message}</span>
               )}
-                <br/>
 
               <input
                 {...register("phone", { required: "Phone number is required" })}
@@ -206,7 +202,6 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
               {errors.street && (
                 <span className="text-red-500 text-sm">{errors.street.message}</span>
               )}
-                            <br/>
 
 
               <input
@@ -218,28 +213,24 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
                 }`}
                 
               />
-                            <br/>
 
               {errors.city && (
-                <span className="text-red-500 text-sm">{errors.city.message}</span>
+                <h1 className="text-red-500 text-sm">{errors.city.message}</h1>
               )}
-                              <br/>
 
               <input
                 {...register("postalCode", { required: "Postal code is required" })}
                 type="text"
                 placeholder="Postal Code"
-                className={`w-full border rounded-lg p-3 ${
+                className={`w-full  border rounded-lg p-3 ${
                   errors.postalCode ? "border-red-500" : ""
                 }`}
               />
-                            <br/>
 
               {errors.postalCode && (
-                <span className="text-red-500 text-sm">{errors.postalCode.message}</span>
+                <h1 className="text-red-500 text-sm">{errors.postalCode.message}</h1>
               )}
 
-              {/* Country dropdown */}
               <select
                 {...register("country", { required: "Country is required" })}
                 className={`w-full border rounded-lg p-3 md:col-span-2 ${
@@ -270,12 +261,12 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
             <h3 className="text-lg font-medium mb-3">Payment Method</h3>
             <div className="space-y-3">
               <label className="flex items-center gap-3">
-                <input
+                {/* <input
                   {...register("paymentMethod", { required: true })}
                   type="radio"
                   value="card"
-                  defaultChecked
-                />
+                  
+                /> */}
                 <span>Credit / Debit Card</span>
               </label>
               <label className="flex items-center gap-3">
@@ -283,6 +274,7 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
                   {...register("paymentMethod", { required: true })}
                   type="radio"
                   value="cod"
+                  defaultChecked
                 />
                 <span>Cash on Delivery (COD)</span>
               </label>
@@ -329,7 +321,7 @@ const userid = useSelector((state) => state.auth.userData?.$id || null);
 
           <button
             type="submit"
-            className="w-full bg-black text-white py-4 rounded-xl font-medium text-lg hover:bg-gray-800 transition-colors"
+            className="w-full bg-orange-600 hover:bg-orange-700  text-white py-4 rounded-xl font-medium text-lg hover:cursor-pointer transition-colors"
           >
             Place Order
           </button>

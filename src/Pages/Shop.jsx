@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 function Shop() {
   return (
     <div>
-    <div className='flex bg-gradient-to-b flex-col pt-10 sm:flex-row from-pink-200 to-white h-full  w-full items-center justify-around'>
-      <div className='flex items-start justify-between flex-col gap-2 '>
+    <div className='flex  flex-col pt-10 lg:flex-row bg-purple-100 h-[850px]  w-full items-center justify-around'>
+      <div className='flex items-start  justify-between flex-col gap-2 '>
         <div className='font-medium text-lg'>NEW ARRIVALS ONLY</div>
         <div className='flex flex-row'>
           <div className='font-bold text-7xl'>new</div>

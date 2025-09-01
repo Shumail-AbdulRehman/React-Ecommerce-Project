@@ -6,14 +6,11 @@ import p1 from '../assets/Assets/product_20.png'
 function ProductCard({ price, $id, title, image, category, subcategory,sizes,stock,color }) {
   return (
     <Link to={`/${category}/${subcategory}/${$id}`}>
-      {/* 🔥 Only content scales on hover */}
       <div className="inline-block transition-transform duration-500 ease-in-out transform hover:scale-105">
         
-        {/* Product Image */}
-        <img src={userService.getFileView(image)} alt={title} className="w-full rounded-lg"/>
+        <img src={userService.getFileView(image)} loading='lazy' alt={title} className="w-full rounded-lg"/>
         {/* <img className="" src={p1} alt={title} /> */}
 
-        {/* Product Info */}
         <div className="mt-2 ml-1">
           <h1 className="text-sm font-bold">{title}</h1>
           <div className='flex gap-3'>  

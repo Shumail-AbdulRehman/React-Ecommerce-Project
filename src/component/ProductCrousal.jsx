@@ -18,6 +18,7 @@ function ProductGrid({ items }) {
                 <img
                   src={userService.getFileView(item.image)}
                   alt={item.title}
+                  loading="lazy"
                   className="max-h-60 w-auto object-contain"
                 />
               </div>

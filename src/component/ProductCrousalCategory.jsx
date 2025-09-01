@@ -14,10 +14,11 @@ function ProductGrid({ items }) {
           >
             <div className="flex flex-col rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
               {/* Image */}
-              <div className="flex justify-center items-center bg-gray-50 p-4">
+              <div className="flex justify-center items-center  bg-gray-50 p-4">
                 <img
                   src={userService.getFileView(item.image)}
                   alt={item.title}
+                  loading="lazy"
                   className="max-h-60 w-auto object-contain"
                 />
               </div>

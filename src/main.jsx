@@ -17,6 +17,7 @@ import CategoryAndSubcategoryPage from './Pages/CategoryAndSubcategoryPage.jsx'
 import Products from './Pages/Products.jsx'
 import Product from './Pages/Product.jsx'
 import CheckoutPage from './Pages/CheckoutPage.jsx'
+// import OrderConfirmation from './Pages/OrderConfirm.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
         <CheckoutPage/>
         </AuthLayout>}
       ,      {path:"/collections/:category",element:<AllSubcategories/>},
+      // {path:"/order/:id",element:<OrderConfirmation/>}
 
 
     ],

@@ -44,10 +44,8 @@ export default function Product() {
   if (product && !loading) {
     return (
       <div className="w-full h-[800px] flex justify-center gap-20 items-center">
-        {/* Product Image */}
-        <img className="w-[500px] h-[600px]" src={userService.getFileView(product.image)} alt={product.title} />
+        <img className="w-[500px] h-[600px]" src={userService.getFileView(product.image)} loading="lazy" alt={product.title} />
 
-        {/* Product Info */}
         <div className="flex flex-col gap-3">
           <h1 className="font-bold text-2xl">{product.title}</h1>
 
@@ -55,7 +53,6 @@ export default function Product() {
             Description: {product.description}
           </h1>
 
-          {/* Price */}
           <div className="flex gap-2">
             <h1 className="text-gray-500 line-through text-lg">PKR 12,789</h1>
             <h1 className="text-red-500 text-xl">
@@ -63,7 +60,6 @@ export default function Product() {
             </h1>
           </div>
 
-          {/* Colors */}
           <div className="flex flex-col gap-1">
             <div className="flex gap-1 items-center">
               <h1 className="font-bold">COLOR:</h1>

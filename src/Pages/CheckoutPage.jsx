@@ -1,24 +1,111 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import p1 from "../assets/Assets/product_20.png"
+// import p1 from "../assets/Assets/product_20.png"
 import userService from "../appwrite/services"
+import orderService from "../appwrite/order"
+import { useNavigate } from "react-router-dom"
+import LoadingSpinner from "../component/LoadingSpinner"
+import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux"
+import { clearCart } from "../store/cartSlice"
+import { useDispatch } from "react-redux"
 function CheckoutPage() {
+  const [loading,setLoading]=useState(false)
+  const dispatch=useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const totalCartItems = useSelector((state) => state.cart.totalQuantity)
   const totalPrice = useSelector((state) => state.cart.totalPrice)
-
+  const [orderPlace,setOrderPlace]=useState(false);
+  const [order,setOrder]=useState(null)
+  const userid=useSelector((state)=> state.auth.userData.$id)
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm()
-
+  const navigate=useNavigate()
   const paymentMethod = watch("paymentMethod", "card")
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    setLoading(true)
     console.log("Checkout Data:", data)
+    console.log(userid)
+      const order=await orderService.createOrder({total:String(totalPrice),ordertype:data.paymentMethod,status:"processing",paymentstatus:"unpaid",userid,orderitems:JSON.stringify(cartItems)})
+
+      console.log("order:=>",order);
+      if(order)
+      {
+        setOrder(order)
+        setOrderPlace(true)
+        console.log("cartitems are:",cartItems);
+        dispatch(clearCart())
+
+        
+      }
+      setLoading(false)
+  }
+
+
+  if(loading)
+  {
+    return <LoadingSpinner/>
+  }
+
+  else if (orderPlace)
+  {
+    return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+      <motion.div
+        className="bg-white rounded-2xl shadow-xl p-10 max-w-lg text-center"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Icon */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+          className="flex justify-center"
+        >
+          <CheckCircle className="h-20 w-20 text-green-500" />
+        </motion.div>
+
+        {/* Title */}
+        <h1 className="text-3xl font-bold text-gray-800 mt-6">
+          Order Confirmed!
+        </h1>
+
+        <p className="text-gray-600 mt-3 text-lg">
+          Thank you for shopping with us 🎉 <br />
+          Your order has been placed successfully.
+        </p>
+
+        <div className="mt-6 bg-gray-100 rounded-xl p-4 text-left text-gray-700">
+          <p className="font-semibold">Your Order id is {order.$id}</p>
+          <p>Estimated delivery: <span className="font-medium">3-5 business days</span></p>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-4">
+          {/* <Link to="/orders">
+            <Button className="w-full bg-black text-white hover:bg-gray-800">
+              View My Orders
+            </Button>
+          </Link> */}
+          <Link to="/collections">
+            <Button variant="outline" className="w-full">
+              Continue Shopping
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
+    </div>
+  );
+
   }
 
   return (
@@ -40,9 +127,11 @@ function CheckoutPage() {
                   errors.fullName ? "border-red-500" : ""
                 }`}
               />
+              <br/>
               {errors.fullName && (
                 <span className="text-red-500 text-sm">{errors.fullName.message}</span>
               )}
+                            <br/>
 
               <input
                 {...register("email", {
@@ -55,9 +144,12 @@ function CheckoutPage() {
                   errors.email ? "border-red-500" : ""
                 }`}
               />
+                            <br/>
+
               {errors.email && (
                 <span className="text-red-500 text-sm">{errors.email.message}</span>
               )}
+                <br/>
 
               <input
                 {...register("phone", { required: "Phone number is required" })}
@@ -67,6 +159,7 @@ function CheckoutPage() {
                   errors.phone ? "border-red-500" : ""
                 }`}
               />
+              
               {errors.phone && (
                 <span className="text-red-500 text-sm">{errors.phone.message}</span>
               )}
@@ -85,9 +178,13 @@ function CheckoutPage() {
                   errors.street ? "border-red-500" : ""
                 }`}
               />
+                            
+
               {errors.street && (
                 <span className="text-red-500 text-sm">{errors.street.message}</span>
               )}
+                            <br/>
+
 
               <input
                 {...register("city", { required: "City is required" })}
@@ -96,10 +193,14 @@ function CheckoutPage() {
                 className={`w-full border rounded-lg p-3 ${
                   errors.city ? "border-red-500" : ""
                 }`}
+                
               />
+                            <br/>
+
               {errors.city && (
                 <span className="text-red-500 text-sm">{errors.city.message}</span>
               )}
+                              <br/>
 
               <input
                 {...register("postalCode", { required: "Postal code is required" })}
@@ -109,6 +210,8 @@ function CheckoutPage() {
                   errors.postalCode ? "border-red-500" : ""
                 }`}
               />
+                            <br/>
+
               {errors.postalCode && (
                 <span className="text-red-500 text-sm">{errors.postalCode.message}</span>
               )}
@@ -258,3 +361,11 @@ function CheckoutPage() {
 }
 
 export default CheckoutPage
+
+
+
+
+
+
+
+

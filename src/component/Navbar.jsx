@@ -35,13 +35,13 @@ const kidSubcategories = ["Tops", "Bottoms", "Winters"]
         </span>
       </Marquee>
     </div>
-       <nav className="relative w-full flex justify-center  sm:justify-around sm:items-center pt-2 pb-2 bg-black font-[Poppins] font-normal text-2xl border-slate-400 border-1">
+       <nav className="relative w-full items-center flex justify-around  sm:justify-around sm:items-center pt-2 pb-2 bg-black font-[Poppins] font-normal text-2xl border-slate-400 border-1">
       {/* Logo */}
       <div className="text-2xl font-extrabold tracking-wide uppercase text-white">
         {/* <img src={logo} alt="Logo" className="w-20" /> */}
         SHOPPER
       </div>
-      <ul className="hidden sm:flex   gap-8 items-center mt-1">
+      <ul className="hidden lg:flex   gap-8 items-center mt-1">
         <Link to="/">        <Button       className=" text-[16px]  bg-black cursor-pointer text-white hover:bg-white hover:text-black border border-black">Home</Button>
 </Link>
   <NavigationMenuComp title="Women" subcategories={womenSubcategories} category="women" />
@@ -53,6 +53,7 @@ const kidSubcategories = ["Tops", "Bottoms", "Winters"]
 </Link>
   
 </ul>
+
 
 <div className="flex justify-around  items-center gap-5">
 

@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
-  totalQuantity: 0,
-  totalPrice: 0,
+  items: JSON.parse(localStorage.getItem("cartItems")) || [],
+  totalQuantity: JSON.parse(localStorage.getItem("totalQuantity")) || 0,
+  totalPrice: JSON.parse(localStorage.getItem("totalPrice")) || 0,
 };
 
 const cartSlice = createSlice({
@@ -22,6 +22,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity++;
         existingItem.totalPrice += newItem.price;
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
       } else {
         state.items.push({
           id: newItem.id,
@@ -33,6 +34,8 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
           image:newItem.image
         });
+                localStorage.setItem("cartItems", JSON.stringify(state.items));
+
       }
 
       state.totalQuantity++;
@@ -49,10 +52,13 @@ const cartSlice = createSlice({
       if (existingItem) {
         state.totalQuantity -= existingItem.quantity;
         state.totalPrice -= existingItem.totalPrice;
+        
 
         state.items = state.items.filter(
           item => !(item.id === id && item.color === color && item.sizes === sizes)
         );
+                localStorage.setItem("cartItems", JSON.stringify(state.items));
+
       }
     },
 
@@ -67,6 +73,8 @@ const cartSlice = createSlice({
         item.totalPrice += item.price;
         state.totalQuantity++;
         state.totalPrice += item.price;
+                localStorage.setItem("cartItems", JSON.stringify(state.items));
+
       }
     },
 
@@ -81,11 +89,15 @@ const cartSlice = createSlice({
         item.totalPrice -= item.price;
         state.totalQuantity--;
         state.totalPrice -= item.price;
+                localStorage.setItem("cartItems", JSON.stringify(state.items));
+
 
         if (item.quantity === 0) {
           state.items = state.items.filter(
             i => !(i.id === id && i.color === color && i.sizes === sizes)
           );
+                  localStorage.setItem("cartItems", JSON.stringify(state.items));
+
         }
       }
     },

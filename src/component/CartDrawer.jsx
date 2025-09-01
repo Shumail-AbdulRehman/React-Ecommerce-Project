@@ -24,8 +24,13 @@ export default function CartSheet({ open, setOpen }) {
 
   const safeOpen = isControlled ? open : internalOpen
   const safeSetOpen = isControlled ? setOpen : setInternalOpen
+  // hellllldlddlldldldld
 
-  const cartItems = useSelector((state) => state.cart.items)
+
+  // const cartItems = useSelector((state) => state.cart.items)
+
+  const cartItems=JSON.parse(localStorage.getItem("cartItems")) || [];
+    
   const totalCartItems = useSelector((state) => state.cart.totalQuantity)
   const totalPrice = useSelector((state) => state.cart.totalPrice)
 
@@ -35,10 +40,14 @@ const decrement = (itemId, color, sizes) =>
   const remove = (itemId,color,sizes) => dispatch(removeItem({id:itemId,color,sizes}))
 
   useEffect(() => {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        localStorage.setItem("totalQuantity", JSON.stringify(totalCartItems));
+                    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
     console.log("cartItems are :", cartItems)
     console.log("color:",cartItems.map((i)=>
     (i.size)))
-  }, [cartItems])
+    // localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems,remove,decrement,increment,totalCartItems])
 
   return (
     <Sheet open={safeOpen} onOpenChange={safeSetOpen}>

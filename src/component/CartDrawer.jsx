@@ -25,18 +25,18 @@ import { increaseQuantity, decreaseQuantity, removeItem } from "../store/cartSli
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import userService from "../appwrite/services"
-
+import LoadingSpinner from "./LoadingSpinner"
 export default function CartSheet({ open, setOpen }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [internalOpen, setInternalOpen] = useState(false)
   const isControlled = typeof open !== "undefined" && typeof setOpen === "function"
-  const userStatus = useSelector((state) => state.auth.status) // 👈 user login status
-  const [openDialog, setOpenDialog] = useState(false) // 👈 login dialog state
-
+  const userStatus = useSelector((state) => state.auth.status) 
+  const [openDialog, setOpenDialog] = useState(false) 
+  const[loading,setLoading]=useState(false)
   const safeOpen = isControlled ? open : internalOpen
   const safeSetOpen = isControlled ? setOpen : setInternalOpen
-
+  console.log("internalOpen:=>",internalOpen)
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || []
   const totalCartItems = useSelector((state) => state.cart.totalQuantity)
   const totalPrice = useSelector((state) => state.cart.totalPrice)
@@ -55,14 +55,23 @@ export default function CartSheet({ open, setOpen }) {
   }, [cartItems, remove, decrement, increment])
 
   const handleCheckout = () => {
+          // setLoading(true)
+
     if (userStatus) {
+      setInternalOpen(false)
       navigate("/checkout")
     } else {
       safeSetOpen(false) 
       setOpenDialog(true) 
     }
+          // setLoading(false)
+
   }
 
+  if(loading)
+  {
+    return <LoadingSpinner/>
+  }
   return (
     <>
       <Sheet open={safeOpen} onOpenChange={safeSetOpen}>

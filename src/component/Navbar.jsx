@@ -62,7 +62,7 @@ const [sideOpen,setSideOpen]=useState(false)
 
 <div className="flex justify-around  items-center gap-5">
 
-  {userStatus? null:<Link to="/login"><button className="  text-white rounded-xl hover:text-black hidden sm:flex hover:bg-gray-100 text-lg sm:text-xl ">Login</button></Link> }
+  {userStatus? null:<Link to="/login"><button className="  text-white rounded-xl hover:text-black hidden sm:flex hover:bg-gray-100 text-lg sm:text-xl px-1.5 py-1 ">Login</button></Link> }
   <CartDrawer/>
   {userStatus? <div className="hidden sm:flex"><LogoutBtn  /></div>:null}
         {sideOpen ?

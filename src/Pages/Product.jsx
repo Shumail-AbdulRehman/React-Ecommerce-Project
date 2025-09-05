@@ -121,7 +121,7 @@ export default function Product() {
             onClick={addToCart}
             disabled={!sizes || !color}
             className={`mt-4 px-6 py-2 rounded-lg bg-orange-600 
-              transition-all duration-300 transform
+              transition-all duration-300 transform mr-6
               ${
                 added
                   ? "bg-green-600 text-white scale-105"

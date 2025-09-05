@@ -61,7 +61,6 @@ export default function FilterSheet({ onFilter }) {
         </SheetHeader>
 
         <div className="space-y-6 mt-4">
-          {/* Sizes Dropdown */}
           <div>
             <button
               className="flex items-center justify-between w-full text-left font-medium"
@@ -83,15 +82,15 @@ export default function FilterSheet({ onFilter }) {
                   <Label
                     key={size}
                     htmlFor={`size-${size}`}
-                    className={`flex items-center   p-2  cursor-pointer transition-all 
-                      ${selectedSize === size ? "border-black bg-gray-100" : "border-gray-300 hover:bg-gray-50"}`}
+                    className={`flex items-center   p-2   transition-all 
+                      ${selectedSize === size ? "border-black bg-gray-100" : "border-gray-300 "}`}
                     onClick={() => handleSizeSelect(size)}
                   >
                     <Checkbox
                       id={`size-${size}`}
                       checked={selectedSize === size}
                       readOnly
-                      className="h-5 w-5 mr-2"
+                      className="h-5 w-5 cursor-pointer hover:bg-gray-50 mr-2"
                     />
                     <span className="text-base font-medium">{size}</span>
                   </Label>
@@ -121,15 +120,15 @@ export default function FilterSheet({ onFilter }) {
                   <Label
                     key={i.value}
                     htmlFor={`price-${i.value}`}
-                    className={`flex items-center   p-2  cursor-pointer transition-all 
-                      ${selectedPrice === i.value ? "border-black bg-gray-100" : "border-gray-300 hover:bg-gray-50"}`}
+                    className={`flex items-center   p-2   transition-all 
+                      ${selectedPrice === i.value ? "border-black bg-gray-100" : "border-gray-300"}`}
                     onClick={() => handlePriceSelect(i.value)}
                   >
                     <Checkbox
                       id={`price-${i.value}`}
                       checked={selectedPrice === i.value}
                       readOnly
-                      className="h-5 w-5 mr-2"
+                      className="h-5 w-5 cursor-pointer hover:bg-gray-50 mr-2"
                     />
                     <span className="text-base font-medium">{i.price}</span>
                   </Label>

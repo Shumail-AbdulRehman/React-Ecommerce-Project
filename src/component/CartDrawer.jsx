@@ -55,7 +55,6 @@ export default function CartSheet({ open, setOpen }) {
   }, [cartItems, remove, decrement, increment])
 
   const handleCheckout = () => {
-          // setLoading(true)
 
     if (userStatus) {
       setInternalOpen(false)
@@ -121,7 +120,7 @@ export default function CartSheet({ open, setOpen }) {
                           size={16}
                           className="text-gray-400 hover:text-red-500"
                         />
-                        remove
+                        
                       </button>
                     </div>
 

@@ -83,7 +83,7 @@ export default function FilterSheet({ onFilter }) {
                   <Label
                     key={size}
                     htmlFor={`size-${size}`}
-                    className={`flex items-center rounded-xl border p-2 shadow-sm cursor-pointer transition-all 
+                    className={`flex items-center   p-2  cursor-pointer transition-all 
                       ${selectedSize === size ? "border-black bg-gray-100" : "border-gray-300 hover:bg-gray-50"}`}
                     onClick={() => handleSizeSelect(size)}
                   >
@@ -100,7 +100,6 @@ export default function FilterSheet({ onFilter }) {
             )}
           </div>
 
-          {/* Price Dropdown */}
           <div>
             <button
               className="flex items-center justify-between w-full text-left font-medium"
@@ -122,7 +121,7 @@ export default function FilterSheet({ onFilter }) {
                   <Label
                     key={i.value}
                     htmlFor={`price-${i.value}`}
-                    className={`flex items-center rounded-xl border p-2 shadow-sm cursor-pointer transition-all 
+                    className={`flex items-center   p-2  cursor-pointer transition-all 
                       ${selectedPrice === i.value ? "border-black bg-gray-100" : "border-gray-300 hover:bg-gray-50"}`}
                     onClick={() => handlePriceSelect(i.value)}
                   >
@@ -140,7 +139,6 @@ export default function FilterSheet({ onFilter }) {
           </div>
         </div>
 
-        {/* Clear Filters Button */}
         <div className="mt-6">
           <Button
             variant="outline"

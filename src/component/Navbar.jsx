@@ -37,7 +37,7 @@ const [sideOpen,setSideOpen]=useState(false)
         </span>
       </Marquee>
     </div>
-       <nav className="relative w-full flex   sm:flex justify-around  sm:justify-around sm:items-center pt-2 pb-2 bg-slate-900 font-[Poppins] font-normal text-2xl border-slate-400 border-1">
+       <nav className="relative w-full flex   sm:flex justify-around  sm:justify-around sm:items-center pt-2 pb-2 bg-slate-900 font-[Poppins] font-normal text-2xl border-slate-900 border-1">
       {/* Logo */}
       <div className="sm:text-2xl text-xl mt-1 font-extrabold tracking-wide uppercase text-white">
         {/* <img src={logo} alt="Logo" className="w-20" /> */}

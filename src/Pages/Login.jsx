@@ -45,7 +45,7 @@ export default function Login() {
   }
 
   return (
-    <main className="flex h-[830px] w-full items-center justify-center bg-white">
+    <main className="flex sm:h-[830px] h-screen sm:w-full w-auto items-center justify-center bg-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-center w-full gap-7 p-6 bg-white border-1 border-black rounded-2xl max-w-md"

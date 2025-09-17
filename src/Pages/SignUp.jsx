@@ -88,8 +88,8 @@ import LoadingSpinner from "../component/LoadingSpinner";
             {...register("password", {
               required: "Password is required",
               minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
+                value: 9,
+                message: "Password must be at least 9 characters",
               },
             })}
           />
@@ -102,7 +102,7 @@ import LoadingSpinner from "../component/LoadingSpinner";
           type="submit"
           className="bg-orange-500 text-white w-full py-2 cursor-pointer rounded-xl hover:bg-orange-600"
         >
-          Create Account
+          Create Accounts
         </button>
 
         <div className="text-lg">
